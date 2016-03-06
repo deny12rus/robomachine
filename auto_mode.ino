@@ -29,29 +29,29 @@ void auto_mode_loop()
           else
             myservo.write(servo_center + 25);
           last_povorot = random(0, 1);
-          digitalWrite(D1, 1);
-          analogWrite(M1, 1);
+          // digitalWrite(D1, 1);
+          // analogWrite(M1, 1);
         }
         else if (dist_cm_left < 10 && dist_cm_left != 0)
         {
           go = "go run right!";
           myservo.write(servo_center + 25);
-          digitalWrite(D1, 0);
-          analogWrite(M1, 255);
+          // digitalWrite(D1, 0);
+          // analogWrite(M1, 255);
         }
         else if (dist_cm_right < 10 && dist_cm_right != 0)
         {
           go = "go run left!";
           myservo.write(servo_center - 25);
-          digitalWrite(D1, 0);
-          analogWrite(M1, 255);
+          // digitalWrite(D1, 0);
+          // analogWrite(M1, 255);
         }
         else
         {
           go = "go run!";
           myservo.write(servo_center);
-          digitalWrite(D1, 0);
-          analogWrite(M1, 255);
+          // digitalWrite(D1, 0);
+          // analogWrite(M1, 255);
         }
       }
       else
@@ -62,9 +62,8 @@ void auto_mode_loop()
         else
           myservo.write(servo_center + 25);
         last_povorot = random(0, 1);
-        digitalWrite(D1, 1);
-        analogWrite(M1, 1);
+        // digitalWrite(D1, 1);
+        // analogWrite(M1, 1);
       }
     }
 }
-

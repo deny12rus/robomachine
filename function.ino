@@ -1,7 +1,9 @@
-void gear_func(int servo, int dvig) //dvig = 1 - вперед; dvig = 0 - нейтраль; dvig = -1 - назад; servo - отклонение руля
+void gear_func(int servo, int dvig) //dvig = 1 - вперед; dvig = 0 - нейтраль; dvig = 2 - назад; servo - отклонение руля
 {
   //управление сервой
-  int servo_current;
+  int servo_current = 0;
+  // Serial.write(servo);
+  // Serial.println(servo);
   if (servo > 0)
   {
     if ( (servo + servo_last_state) <= (servo_center + servo_max_state) )
@@ -21,34 +23,14 @@ void gear_func(int servo, int dvig) //dvig = 1 - вперед; dvig = 0 - ней
 
   if (servo_current != servo_last_state)
   {
+    // Serial.println(servo_current);
     myservo.write(servo_current);
     servo_last_state = servo_current;
   }
 
   //управление мотором
-  if (dvig_last_state != dvig)
-  {
-    int dw;
-    int aw;
-    
-    if (dvig > 0)
-    {
-      dw = 0; aw = 255;
-    }
-    else if (dvig < 0)
-    {
-      dw = 1; aw = 1;
-    }
-    else
-    {
-      dw = 0; aw = 0;
-    }
 
-    digitalWrite(D1, dw);
-    analogWrite(M1, aw);
-    dvig_last_state = dvig;
-  }
-  
+  motor(dvig);
+
   fan_time = millis();
 }
-
