@@ -67,3 +67,32 @@ void auto_mode_loop()
       }
     }
 }
+
+void sensor_loop()
+{
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis > interval)
+  {
+    previousMillis = currentMillis; //сохраняем текущее время
+    int dist_cm_center = digitalRead(ir_PIN);
+    sensor_center = dist_cm_center;
+
+    int dist_cm_left = ultrasonic_left.ping();
+    dist_cm_left = dist_cm_left / US_ROUNDTRIP_CM;
+    if (dist_cm_left < 10 && dist_cm_left != 0)
+      sensor_left = 0;
+    else
+      sensor_left = 1;
+
+    int dist_cm_right = ultrasonic_right.ping();
+    dist_cm_right = dist_cm_right / US_ROUNDTRIP_CM;
+    if (dist_cm_right < 10 && dist_cm_right != 0)
+      sensor_right = 0;
+    else
+      sensor_right = 1;
+
+    String message = "";
+    message = String(message + " " + int(dist_cm_left) + " " + int(dist_cm_center) + " " + int(dist_cm_right));
+    Serial.println(message);
+  }
+}

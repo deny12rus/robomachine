@@ -1,29 +1,30 @@
 void bluetooth_mode_loop()
 {
-  if (Serial1.available()) {
-      int inByte = Serial1.read();
-      Serial.write(inByte);
-      Serial.println();
-      if (inByte == 'F')
-        gear_func(0, 1);
-      else if (inByte == 'L')
-        gear_func(-25, 0);
-      else if (inByte == 'R')
-        gear_func(25, 0);
-      else if (inByte == 'S')
-        gear_func(0, 0);
-      else if (inByte == 'G')
-        gear_func(-25, 1);
-      else if (inByte == 'I')
-        gear_func(25, 1);
-      else if (inByte == 'B')
-        gear_func(0, 2);
-      else if (inByte == 'J')
-        gear_func(25, 2);
-      else if (inByte == 'H')
-        gear_func(-25, 2);
-      else
-        gear_func(0, 0);
+  if (Serial1.available())
+  {
+    int inByte = Serial1.read();
+    // Serial.write(inByte);
+    // Serial.println();
+    if (inByte == 'F')
+      gear_func(0, 1);
+    else if (inByte == 'L')
+      gear_func(-25, 0);
+    else if (inByte == 'R')
+      gear_func(25, 0);
+    else if (inByte == 'S')
+      gear_func(0, 0);
+    else if (inByte == 'G')
+      gear_func(-25, 1);
+    else if (inByte == 'I')
+      gear_func(25, 1);
+    else if (inByte == 'B')
+      gear_func(0, 2);
+    else if (inByte == 'J')
+      gear_func(25, 2);
+    else if (inByte == 'H')
+      gear_func(-25, 2);
+    else
+      gear_func(0, 0);
 
       // switch (inByte) {
       //   case 'F':

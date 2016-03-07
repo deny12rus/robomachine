@@ -25,7 +25,7 @@ int ENBV = 6;
 // #define D1 22 // Направление вращение двигателя 1
 // #define M1 23 // ШИМ вывод для управления двигателем 1
 // #define D2 27 // направление вращение вентилятора
-#define M2 26 //шим вывод для упр двигателем
+// #define M2 26 //шим вывод для упр двигателем
 #define ledPin_left 40
 #define ledPin_right 41
 #define ledPin_center 42
@@ -35,15 +35,19 @@ int ENBV = 6;
 #define ultrasonic_pg 5
 #define MAX_DISTANCE 2000
 
-
+//ультра звыуковые сенсоры
 NewPing ultrasonic_left(50, 51, MAX_DISTANCE);
 NewPing ultrasonic_right(48, 49, MAX_DISTANCE);
 
-
-
+//
+int sensor_center = 1;
+int sensor_right = 1;
+int sensor_left = 1;
+//
 int dvig_last_state = 0;
 
-int work_type = 0; //режим работы, 0 - блютус, 1 - самостоятельное движение
+//режим работы, 0 - блютус, 1 - самостоятельное движение
+int work_type = 0;
 
 
 long interval = 250; //интервал опроса датчиков
@@ -53,30 +57,27 @@ long fan_time = 0; //время включения вентилятора
 
 void fan_loop()
 {
-  // digitalWrite(D2, 0);
-  unsigned long currentMillis = millis();
-  if ((currentMillis - fan_time) > 5000)
-    analogWrite(ENBV, 0);
-  else
-    analogWrite(ENBV, 230);
-
-
-  // analogWrite(ENBV, 150);
+  // unsigned long currentMillis = millis();
+  // if ((currentMillis - fan_time) > 5000)
+  //   analogWrite(ENBV, 0);
+  // else
+  //   analogWrite(ENBV, 230);
+  // if (last_motor_type != 0)
+  //   analogWrite(ENBV, 230);
+  // else
+  //   analogWrite(ENBV, 0);
 }
 
 
 
 void setup() {
   // put your setup code here, to run once:
-  //lcd.init();
   Serial.begin(9600);
   Serial1.begin(9600);
   pinMode(ledPin_left, OUTPUT);
   pinMode(ledPin_right, OUTPUT);
   pinMode(ledPin_center, OUTPUT);
   pinMode(ledPin_stop, OUTPUT);
-  // pinMode(D1, OUTPUT);
-  // pinMode(D2, OUTPUT);
   pinMode(ir_PIN, INPUT);
   //мотор
   pinMode (ENB, OUTPUT);
@@ -89,13 +90,14 @@ void setup() {
   pinMode (ENBV, OUTPUT);
   pinMode (IN1, OUTPUT);
   pinMode (IN2, OUTPUT);
-  digitalWrite (IN1, HIGH);
-  digitalWrite (IN2, LOW);
+  // digitalWrite (IN1, HIGH);
+  // digitalWrite (IN2, LOW);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  fan_loop();
+  // fan_loop();
+  sensor_loop();
 
   if (work_type == 0)
     bluetooth_mode_loop();
