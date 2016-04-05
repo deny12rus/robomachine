@@ -17,7 +17,7 @@ void auto_mode_loop()
 
       String message = "";
       message = String(message + " " + int(dist_cm_left) + " " + int(dist_cm_center) + " " + int(dist_cm_right));
-      Serial.println(message);
+      // Serial.println(message);
 
       if (dist_cm_center == HIGH)
       {

@@ -3,14 +3,14 @@
 #include <Servo.h>
 
 //мотор
-int IN3 = 22;
-int IN4 = 23;
-int ENB = 7;
+int IN3 = 4;
+int IN4 = 5;
+int ENB = 3; //шим
 int last_motor_type = 0;
 long last_motor_time = 0;
 
 //сервопривод
-#define servo_pin 25 //пин сервы руля
+#define servo_pin 2 //пин сервы руля
 Servo myservo;
 int servo_center = 110; //центр рулевой тяги
 int servo_last_state = 110; //последнее положение руля
@@ -18,9 +18,9 @@ int servo_max_state = 20; //максимальное отклонение рул
 int last_povorot = 0;
 
 //вентилятор
-int IN1 = 26;
-int IN2 = 25;
-int ENBV = 6;
+int IN1 = 6;
+int IN2 = 7;
+int ENBV = 9;
 
 // #define D1 22 // Направление вращение двигателя 1
 // #define M1 23 // ШИМ вывод для управления двигателем 1
@@ -30,14 +30,14 @@ int ENBV = 6;
 #define ledPin_right 41
 #define ledPin_center 42
 #define ledPin_stop 43
-#define ir_PIN 47
+#define ir_PIN 13
 #define min_dist 15
 #define ultrasonic_pg 5
 #define MAX_DISTANCE 2000
 
 //ультра звыуковые сенсоры
-NewPing ultrasonic_left(50, 51, MAX_DISTANCE);
-NewPing ultrasonic_right(48, 49, MAX_DISTANCE);
+NewPing ultrasonic_left(12, 11, MAX_DISTANCE);
+NewPing ultrasonic_right(8, 10, MAX_DISTANCE);
 
 //
 int sensor_center = 1;
@@ -73,7 +73,7 @@ void fan_loop()
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  Serial1.begin(9600);
+  // Serial1.begin(9600);
   pinMode(ledPin_left, OUTPUT);
   pinMode(ledPin_right, OUTPUT);
   pinMode(ledPin_center, OUTPUT);

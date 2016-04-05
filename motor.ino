@@ -35,19 +35,19 @@ void motor(int type)
     {
       digitalWrite (IN4, HIGH);
       digitalWrite (IN3, LOW);
-      analogWrite(ENB, power);
+      analogWrite (ENB, power);
       digitalWrite (IN1, HIGH);
       digitalWrite (IN2, LOW);
-      analogWrite(ENBV, power);
+      analogWrite (ENBV, power);
     }
     else if (type == 2)
     {
       digitalWrite (IN3, HIGH);
       digitalWrite (IN4, LOW);
-      analogWrite(ENB, power);
+      analogWrite (ENB, power);
       digitalWrite (IN1, HIGH);
       digitalWrite (IN2, LOW);
-      analogWrite(ENBV, 0);
+      analogWrite (ENBV, 0);
     }
     last_motor_type = type;
   }

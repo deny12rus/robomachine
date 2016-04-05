@@ -1,8 +1,8 @@
 void bluetooth_mode_loop()
 {
-  if (Serial1.available())
+  if (Serial.available())
   {
-    int inByte = Serial1.read();
+    int inByte = Serial.read();
     // Serial.write(inByte);
     // Serial.println();
     if (inByte == 'F')
