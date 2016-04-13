@@ -10,8 +10,8 @@ void motor(int type)
   int power = 180;
   if (currentMillis > (last_motor_time + 100))
     power = 254;
-  if (currentMillis > (last_motor_time + 500))
-    power = 160;
+  // if (currentMillis > (last_motor_time + 500))
+  //   power = 160;
 
 
   // Serial.println(power);

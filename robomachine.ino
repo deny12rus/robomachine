@@ -12,8 +12,8 @@ long last_motor_time = 0;
 //сервопривод
 #define servo_pin 2 //пин сервы руля
 Servo myservo;
-int servo_center = 110; //центр рулевой тяги
-int servo_last_state = 110; //последнее положение руля
+int servo_center = 105; //центр рулевой тяги
+int servo_last_state = servo_center; //последнее положение руля
 int servo_max_state = 20; //максимальное отклонение руля от центра
 int last_povorot = 0;
 
