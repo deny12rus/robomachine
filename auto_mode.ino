@@ -80,19 +80,34 @@ void sensor_loop()
     int dist_cm_left = ultrasonic_left.ping();
     dist_cm_left = dist_cm_left / US_ROUNDTRIP_CM;
     if (dist_cm_left < 10 && dist_cm_left != 0)
+    {
       sensor_left = 0;
+      digitalWrite(ledPin_left, HIGH);      
+    }
     else
-      sensor_left = 1;
+    {
+       sensor_left = 1;
+       digitalWrite(ledPin_left, LOW);
+    }
+      
 
     int dist_cm_right = ultrasonic_right.ping();
     dist_cm_right = dist_cm_right / US_ROUNDTRIP_CM;
     if (dist_cm_right < 10 && dist_cm_right != 0)
+    {
+      digitalWrite(ledPin_right, HIGH);
       sensor_right = 0;
+    }
+      
     else
+    {
+      digitalWrite(ledPin_right, LOW);
       sensor_right = 1;
-
+    }
+      
+    
     String message = "";
-    message = String(message + " " + int(dist_cm_left) + " " + int(dist_cm_center) + " " + int(dist_cm_right));
+    message = String(message + int(sensor_left) + "-" + int(sensor_center) + "-" + int(sensor_right) + " " + int(dist_cm_left) + " " + int(dist_cm_center) + " " + int(dist_cm_right));
     Serial.println(message);
   }
 }

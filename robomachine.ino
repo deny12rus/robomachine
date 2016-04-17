@@ -12,7 +12,7 @@ long last_motor_time = 0;
 //сервопривод
 #define servo_pin 2 //пин сервы руля
 Servo myservo;
-int servo_center = 105; //центр рулевой тяги
+int servo_center = 110; //центр рулевой тяги
 int servo_last_state = servo_center; //последнее положение руля
 int servo_max_state = 20; //максимальное отклонение руля от центра
 int last_povorot = 0;
@@ -26,12 +26,12 @@ int ENBV = 9;
 // #define M1 23 // ШИМ вывод для управления двигателем 1
 // #define D2 27 // направление вращение вентилятора
 // #define M2 26 //шим вывод для упр двигателем
-#define ledPin_left 40
-#define ledPin_right 41
+#define ledPin_left A0
+#define ledPin_right A1
 #define ledPin_center 42
 #define ledPin_stop 43
 #define ir_PIN 13
-#define min_dist 15
+#define min_dist 30
 #define ultrasonic_pg 5
 #define MAX_DISTANCE 2000
 
